@@ -1,0 +1,32 @@
+name: qbittorrent
+
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:${QBITTORRENT_VERSION}
+    container_name: qbittorrent
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - qbittorrent_appdata:/config:wr
+      - ~/Downloads:/downloads:wr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - WEBUI_PORT=8083
+      - TORRENTING_PORT=6881
+    ports:
+      - "0.0.0.0:6881:6881"
+      - "0.0.0.0:6881:6881/udp"
+      - "127.0.0.1:8083:8083"
+    networks:
+      - nginx-proxy-manager_frontend
+    restart: unless-stopped
+    labels:
+      - wud.tag.include=^\d\.\d+\.\d+$$
+
+networks:
+  nginx-proxy-manager_frontend:
+    driver: bridge
+    external: true
+
+volumes:
+  qbittorrent_appdata:
