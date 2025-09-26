@@ -18,12 +18,19 @@ services:
       - "0.0.0.0:6881:6881/udp"
       - "127.0.0.1:8083:8083"
     networks:
+      - backend
       - nginx-proxy-manager_frontend
     restart: unless-stopped
     labels:
       - wud.tag.include=^\d\.\d+\.\d+$$
+      - traefik.enable=true
+      - traefik.http.routers.qbittorrent-qbittorrent.rule=Host(`qb.dhjensen.tech`)
+      - traefik.http.services.qbittorrent-qbittorrent.Loadbalancer.server.port=8083
 
 networks:
+  backend:
+    driver: bridge
+    external: true
   nginx-proxy-manager_frontend:
     driver: bridge
     external: true
