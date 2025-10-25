@@ -17,6 +17,8 @@ services:
       - VPN_PORT_FORWARDING
       - TZ
       - QBT_WEBUI_ENABLED=true
+    networks:
+      - backend
     restart: unless-stopped
     labels:
       - wud.tag.include=^v\d\.\d+\.\d+$$
