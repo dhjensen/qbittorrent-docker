@@ -21,8 +21,8 @@ services:
     labels:
       - wud.tag.include=^v\d\.\d+\.\d+$$
       - traefik.enable=true
-      - traefik.http.routers.qbittorrent-qbittorrent.rule=Host(`qb.dhjensen.tech`)
-      # - traefik.http.services.qbittorrent-qbittorrent.Loadbalancer.server.port=8083
+      - traefik.http.routers.gluetun-qbittorrentwithprotonvpnp2p.rule=Host(`qb.dhjensen.tech`)
+      - traefik.http.services.gluetun-qbittorrentwithprotonvpnp2p.Loadbalancer.server.port=8083
     cap_add:
       - NET_ADMIN
     devices:
