@@ -37,9 +37,8 @@ services:
       gluetun:
         condition: service_healthy
     volumes:
-      - qbittorrent-appdata:/config:wr
-      - qbittorrent-incomplete:/incomplete:rw
-      - ~/Downloads:/data/downloads:wr
+      - qbittorrent-appdata:/config:rw
+      - ~/Downloads:/data/downloads:rw
     environment:
       - PUID=1000
       - PGID=1000
@@ -67,4 +66,3 @@ networks:
 volumes:
   gluetun-config:
   qbittorrent-appdata:
-  qbittorrent-incomplete:
