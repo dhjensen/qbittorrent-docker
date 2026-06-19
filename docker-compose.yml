@@ -6,6 +6,7 @@ services:
     container_name: vpn
     volumes:
       - gluetun-config:/gluetun:rw
+      - ./config.toml:/gluetun/auth/config.toml:ro
     ports:
       - '127.0.0.1:8083:8083'
     environment:
@@ -46,8 +47,7 @@ services:
       - WEBUI_PORT=8083
       - QBITTORRENT_INTERFACE=tun0
       - DOCKER_MODS=ghcr.io/t-anc/gsp-qbittorent-gluetun-sync-port-mod:main
-      - GSP_GTN_API_KEY=${GSP_GTN_API_KEY:-randomapikey}
-      - GSP_QBITTORRENT_PORT=${GSP_QBITTORRENT_PORT:-53764}
+      - GSP_GTN_API_KEY
     network_mode: "service:gluetun"
     restart: unless-stopped
     labels:
