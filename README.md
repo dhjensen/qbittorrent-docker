@@ -13,6 +13,7 @@ VPN_PORT_FORWARDING='on'
 VPN_SERVICE_PROVIDER='protonvpn'
 VPN_TYPE='wireguard'
 WIREGUARD_PRIVATE_KEY='key'
+GSP_GTN_API_KEY='key'
 ```
 
 ## config.toml
