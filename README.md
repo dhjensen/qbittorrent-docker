@@ -12,5 +12,16 @@ TZ='Europe/Copenhagen'
 VPN_PORT_FORWARDING='on'
 VPN_SERVICE_PROVIDER='protonvpn'
 VPN_TYPE='wireguard'
-WIREGUARD_PRIVATE_KEY='key
+WIREGUARD_PRIVATE_KEY='key'
+GSP_GTN_API_KEY='key'
+```
+
+## config.toml
+
+```bash
+[[roles]]
+name = "t-anc/GSP-Qbittorent-Gluetun-sync-port-mod"
+routes = ["GET /v1/portforward"]
+auth = "apikey"
+apikey = "key"
 ```
